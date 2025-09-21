@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор Администратора</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Animated particle background -->
+        <div class="particle-bg">
+            <div class="particle" style="--delay: 0s; --duration: 12s; --size: 3px;"></div>
+            <div class="particle" style="--delay: 2s; --duration: 15s; --size: 4px;"></div>
+            <div class="particle" style="--delay: 4s; --duration: 10s; --size: 2px;"></div>
+            <div class="particle" style="--delay: 6s; --duration: 18s; --size: 5px;"></div>
+            <div class="particle" style="--delay: 8s; --duration: 14s; --size: 3px;"></div>
+            <div class="particle" style="--delay: 10s; --duration: 16s; --size: 4px;"></div>
+            <div class="particle" style="--delay: 1s; --duration: 13s; --size: 2px;"></div>
+            <div class="particle" style="--delay: 3s; --duration: 11s; --size: 3px;"></div>
+            <div class="particle" style="--delay: 5s; --duration: 17s; --size: 4px;"></div>
+            <div class="particle" style="--delay: 7s; --duration: 9s; --size: 3px;"></div>
+        </div>
+
+        <!-- Geometric animated background -->
+        <div class="geo-bg">
+            <div class="geo-shape geo-circle"></div>
+            <div class="geo-shape geo-square"></div>
+            <div class="geo-shape geo-triangle"></div>
+        </div>
+
+        <!-- Header with gradient text and glow -->
+        <header class="header">
+            <div class="header-glow"></div>
+            <h1 class="header-title">
+                <span class="title-text">🛡️ АДМИНИСТРАТОРЫ</span>
+                <div class="title-underline"></div>
+            </h1>
+            <p class="header-subtitle">Выберите администратора для связи</p>
+        </header>
+
+        <!-- Navigation tabs with correct labels -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="available">
+                <span class="tab-icon">✅</span>
+                <span class="tab-text">Доступные админы</span>
+                <div class="tab-indicator"></div>
+            </button>
+            <button class="tab" data-tab="unavailable">
+                <span class="tab-icon">🔴</span>
+                <span class="tab-text">Недоступные админы</span>
+                <div class="tab-indicator"></div>
+            </button>
+        </nav>
+
+        <!-- Content sections -->
+        <main class="content">
+            <section class="tab-content active" id="available">
+                <div class="admins-grid" id="available-admins">
+                    <!-- Available admins will be loaded here -->
+                </div>
+                <div class="empty-state" id="available-empty" style="display: none;">
+                    <div class="empty-icon">😴</div>
+                    <h3 class="empty-title">Нет доступных админов</h3>
+                    <p class="empty-description">В данный момент все администраторы заняты. Попробуйте позже или отправьте сообщение - мы обязательно ответим!</p>
+                </div>
+            </section>
+
+            <section class="tab-content" id="unavailable">
+                <div class="admins-grid" id="unavailable-admins">
+                    <!-- Unavailable admins will be loaded here -->
+                </div>
+                <div class="empty-state" id="unavailable-empty" style="display: none;">
+                    <div class="empty-icon">🎉</div>
+                    <h3 class="empty-title">Все админы свободны</h3>
+                    <p class="empty-description">Отлично! Все наши администраторы сейчас готовы помочь вам. Перейдите во вкладку 'Доступные админы'.</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Confirmation modal -->
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Подтверждение выбора</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="selected-admin-preview">
+                        <div class="admin-avatar">#</div>
+                        <div class="admin-info">
+                            <div class="admin-tag" id="modal-admin-tag">#admin</div>
+                            <div class="admin-desc" id="modal-admin-desc">Описание</div>
+                        </div>
+                    </div>
+                    <p class="modal-text">Отправить запрос этому администратору?</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="modal-cancel">Отмена</button>
+                    <button class="btn btn-primary" id="modal-confirm">
+                        <span class="btn-text">Отправить</span>
+                        <span class="btn-loading" style="display: none;">⏳</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
